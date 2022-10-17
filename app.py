@@ -14,4 +14,4 @@ if st.button("CLC"):
         for i in range(20):
             t.sleep(0.1)
     st.success("Done")
-st.write("asfaf")
+st.write("THis is a test app")

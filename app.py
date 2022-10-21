@@ -3,7 +3,7 @@ from streamlit_option_menu import option_menu
 import time as t
 
 st.set_page_config("set_page_config")
-st.title("My hhahahah app")
+st.title("My app")
 f = option_menu("Select",["one","two",'three'],icons=["house","bi bi-box","bi bi-chat-quote-fill"],orientation="horizontal")
 if(f=="one"):
     st.write("one")

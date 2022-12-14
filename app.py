@@ -25,7 +25,6 @@ if(f=="two"):
     # st.plotly_chart(fig, use_container_width=True)
     # st.write(type(df))
     # st.pydeck_chart()
-
 st.header("Test app")
 st.caption("This is caption")
 st.text_input("ENA")

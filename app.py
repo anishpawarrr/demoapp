@@ -3,7 +3,28 @@ from streamlit_option_menu import option_menu
 import time as t
 import pandas as pd
 import plotly_express as px
-import numpy as np
+import requests
+import gpsd
+def get_location(ip_address):
+  # Make a request to the geolocation service with the IP address
+  response = requests.get(f'https://api.ipgeolocation.io/ipgeo?apiKey=eca3fc42a0c34ee8b745ebc67042795a&ip={ip_address}')
+
+  # Check if the request was successful
+  if response.status_code == 200:
+    # Get the location data from the response
+    location_data = response.json()
+
+    # Extract the location information from the data
+    country = location_data.get('country_name')
+    city = location_data.get('city')
+    latitude = location_data.get('latitude')
+    longitude = location_data.get('longitude')
+
+    # Return the location information
+    return (country, city, latitude, longitude)
+  else:
+    # Return None if the request was not successful
+    return None
 st.set_page_config("set_page_config")
 st.title("My ddrety app")
 f = option_menu("Select",["one","two",'three'],icons=["house","bi bi-box","bi bi-chat-quote-fill"],orientation="horizontal")
@@ -26,6 +47,17 @@ if(f=="two"):
     # st.plotly_chart(fig, use_container_width=True)
     # st.write(type(df))
     # st.pydeck_chart()
+if(f=="three"):
+    # Connect to the gpsd daemon
+    gpsd.connect()
+
+    # Get the current GPS data
+    packet = gpsd.get_current()
+
+    # Calculate the speed in kilometers per hour
+    speed_kph = packet.speed() * 3.6
+
+    print(f"Current speed: {speed_kph} km/h")
 st.header("Test app")
 st.caption("This is caption")
 st.text_input("ENA")

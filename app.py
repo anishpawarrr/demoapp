@@ -46,17 +46,9 @@ if(f=="two"):
     # st.plotly_chart(fig, use_container_width=True)
     # st.write(type(df))
     # st.pydeck_chart()
-if(f=="three"):
-    # Connect to the gpsd daemon
-    gpsd.connect()
 
-    # Get the current GPS data
-    packet = gpsd.get_current()
 
-    # Calculate the speed in kilometers per hour
-    speed_kph = packet.speed() * 3.6
 
-    print(f"Current speed: {speed_kph} km/h")
 st.header("Test app")
 st.caption("This is caption")
 st.text_input("ENA")

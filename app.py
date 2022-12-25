@@ -4,7 +4,6 @@ import time as t
 import pandas as pd
 import plotly_express as px
 import requests
-import gpsd
 def get_location(ip_address):
   # Make a request to the geolocation service with the IP address
   response = requests.get(f'https://api.ipgeolocation.io/ipgeo?apiKey=eca3fc42a0c34ee8b745ebc67042795a&ip={ip_address}')
